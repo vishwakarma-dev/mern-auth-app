@@ -1,1 +1,1 @@
-# Mern OAuth App
+# Mern Auth App
