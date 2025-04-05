@@ -1,7 +1,7 @@
 import { Box, Button, Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../app/hooks';
-import { signOut } from '../app/features/authSlice';
+import { signOutUser } from '../app/features/authSlice';
 
 export default function Home() {
   const navigate = useNavigate();
@@ -9,8 +9,7 @@ export default function Home() {
   const dispatch = useAppDispatch();
 
   const handleLogout = () => {
-    dispatch(signOut());
-    navigate('/sign-in');
+    dispatch(signOutUser());
   };
 
   return (

@@ -34,7 +34,7 @@ const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    signOut(state) {
+    signOutUser(state) {
       state.data.user = null;
       state.data.token = null;
       state.data.isAuthenticated = false;
@@ -66,5 +66,5 @@ const authSlice = createSlice({
   },
 });
 
-export const { signOut } = authSlice.actions;
+export const { signOutUser } = authSlice.actions;
 export default authSlice.reducer;
