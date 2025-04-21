@@ -7,7 +7,6 @@ import Typography from '@mui/material/Typography';
 import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded';
 import NotificationsRoundedIcon from '@mui/icons-material/NotificationsRounded';
 import MenuButton from './MenuButton';
-import CardAlert from './CardAlert';
 import MenuContent from './MenuContent';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { signOutUser } from '../../app/features/authSlice';
@@ -69,7 +68,6 @@ export default function SideMenuMobile({ open, toggleDrawer }: SideMenuMobilePro
           <MenuContent />
           <Divider />
         </Stack>
-        <CardAlert />
         <Stack sx={{ p: 2 }}>
           <Button variant="outlined" fullWidth startIcon={<LogoutRoundedIcon />} onClick={handleLogout}>
             Logout

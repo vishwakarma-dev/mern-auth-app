@@ -5,7 +5,6 @@ import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
-import CardAlert from './CardAlert';
 import OptionsMenu from './OptionsMenu';
 import MenuContent from './MenuContent';
 import CompanyLogo from './CompanyLogo';
@@ -56,7 +55,6 @@ export default function SideMenu() {
         }}
       >
         <MenuContent />
-        <CardAlert />
       </Box>
       <Stack
         direction="row"
