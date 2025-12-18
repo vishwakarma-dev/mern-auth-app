@@ -97,6 +97,7 @@ export default function SignIn() {
             onChange={(e) => setEmail(e.target.value)}
             fullWidth
             required
+            disabled={loading}
             error={
               submitted && (!email_id || !isValidEmail(email_id))
             }
@@ -114,6 +115,7 @@ export default function SignIn() {
             label="Password"
             type="password"
             value={password}
+            disabled={loading}
             size='small'
             onChange={(e) => setPassword(e.target.value)}
             fullWidth

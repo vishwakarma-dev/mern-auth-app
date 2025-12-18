@@ -13,6 +13,7 @@ import {
   import { useAppSelector } from '../../app/hooks';
   import { useSnackbar } from '../../hooks/SnackbarProvider';
 import { FacebookIcon, GoogleIcon } from './CustomIcons';
+import { signUp } from '../../services/auth.service';
   
   export default function SignUp() {
     const [first_name, setFirstName] = useState('');
@@ -33,9 +34,9 @@ import { FacebookIcon, GoogleIcon } from './CustomIcons';
   
     const passwordsMatch = password === confirmPassword;
   
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
       setSubmitted(true);
-  
+    
       if (
         !first_name ||
         !last_name ||
@@ -44,22 +45,28 @@ import { FacebookIcon, GoogleIcon } from './CustomIcons';
         !password ||
         !confirmPassword ||
         !passwordsMatch
-      )
+      ) {
         return;
-  
-    //   dispatch(signUpUser({ first_name, last_name, email_id, password }));
-    };
-  
-    useEffect(() => {
-      if (submitted ) {
-        showMessage('Sign up successful!', 'success');
+      }
+    
+      try {
+        const res = await signUp({
+          first_name,
+          last_name,
+          email_id,
+          password,
+          mobile_number: '+91 xxxxx xxxxx' // Dummy mobile number
+        });
+    
+        showMessage(res.message || 'Sign up successful!', 'success');
         navigate('/sign-in');
+      } catch (err: any) {
+        showMessage(
+          err?.response?.data?.message || 'Sign up failed',
+          'error'
+        );
       }
-      else if(data.isAuthenticated){
-        navigate('/dashboard');
-      }
-
-    }, [data.isAuthenticated]);
+    };
   
     useEffect(() => {
       if (error) {

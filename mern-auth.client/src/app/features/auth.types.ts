@@ -12,7 +12,7 @@ export interface AuthState {
     user: IUser | null;
     token: string | null;
     isAuthenticated: boolean;
-  }
+  } | any;
   loading: boolean;
   error: string | null;
 }

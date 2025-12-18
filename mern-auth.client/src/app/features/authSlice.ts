@@ -1,14 +1,14 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
-import { AuthState, IUser } from './authTypes';
-import api from '../../api/axios';
+import { AuthState, IUser } from './auth.types';
+import { AuthResponse, signIn } from '../../services/auth.service';
 
 // --- Async thunk for login ---
 export const signInUser = createAsyncThunk(
   'auth/loginUser',
   async (payload: { email_id: string; password: string }, { rejectWithValue }) => {
     try {
-      const response = await api.post('/auth/sign-in', payload);
-      return response.data as { user: IUser; token: string };
+      const response = await signIn(payload);
+      return response as AuthResponse['data'];
     } catch (err: any) {
       return rejectWithValue(err?.response?.data?.msg || 'Signin failed!');
     }
